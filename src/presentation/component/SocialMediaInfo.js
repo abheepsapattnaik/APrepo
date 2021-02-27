@@ -13,6 +13,7 @@ import Typography from '@material-ui/core/Typography';
 import {red} from '@material-ui/core/colors';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import logo from '../../abheepsa-logo.png';
+import {Link} from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -41,7 +42,10 @@ const useStyles = makeStyles((theme) => ({
 export default function SocialMediaInfo() {
     const classes = useStyles();
     const [expanded, setExpanded] = React.useState(false);
-
+    const openInNewTab = (url) => {
+        const newWindow = window.open(url)
+        if (newWindow) newWindow.opener = null
+    }
     const handleExpandClick = () => {
         setExpanded(!expanded);
     };
@@ -75,20 +79,28 @@ export default function SocialMediaInfo() {
                     aria-expanded={expanded}
                     aria-label="show more"
                 >
-                    <ExpandMoreIcon />
+                    <ExpandMoreIcon/>
                 </IconButton>
             </CardActions>
             <Collapse in={expanded} timeout="auto" unmountOnExit>
                 <CardContent>
-                    <Typography paragraph>User ids</Typography>
-                    <Typography paragraph>
-                       LinkedIn
+                    <Typography className={classes.root}>
+                        <Link onClick={() => openInNewTab("https://www.linkedin.com/in/abheepsa-pattnaik-a23706b4")}
+                              variant="body2">
+                            LinkedIn
+                        </Link>
                     </Typography>
-                    <Typography paragraph>
-                       Instagram
+                    <Typography className={classes.root}>
+                        <Link onClick={() => openInNewTab("https://github.com/abheepsapattnaik?tab=repositories")}
+                              variant="body2">
+                            GitHub
+                        </Link>
                     </Typography>
-                    <Typography paragraph>
-                       Git
+                    <Typography className={classes.root}>
+                        <Link onClick={() => openInNewTab("https://www.instagram.com/abheepsapattnaik/?hl=en")}
+                              variant="body2">
+                            Instagram
+                        </Link>
                     </Typography>
                 </CardContent>
             </Collapse>
