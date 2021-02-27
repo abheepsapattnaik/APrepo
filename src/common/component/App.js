@@ -1,7 +1,6 @@
 import './App.css';
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
-import SocialMediaInfo from '../../presentation/component/SocialMediaInfo';
-import AppTopBar from './AppTopBar';
+import SideNavBar from "../../presentation/component/SideNavBar";
 
 const theme = createMuiTheme({
         palette: {
@@ -15,8 +14,7 @@ const theme = createMuiTheme({
 const App = () => (
     <MuiThemeProvider theme={theme}>
         <div className="App">
-            <AppTopBar></AppTopBar>
-            <SocialMediaInfo></SocialMediaInfo>
+            <SideNavBar></SideNavBar>
         </div>
     </MuiThemeProvider>
 );
