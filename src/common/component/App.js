@@ -1,6 +1,8 @@
 import logo from '../../abheepsa-logo.png';
 import './App.css';
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
+import SocialMediaInfo from "../../presentation/component/social-media-info";
+import ButtonAppBar from "./app-bar";
 
 const theme = createMuiTheme({
         palette: {
@@ -14,12 +16,8 @@ const theme = createMuiTheme({
 const App = () => (
     <MuiThemeProvider theme={theme}>
         <div className="App">
-            <header className="App-header">
-                <img src={logo} className="App-logo" alt="logo"/>
-            </header>
-            <div className="info App-link">
-                Hello..Abheepsa here !!!
-            </div>
+            <ButtonAppBar></ButtonAppBar>
+            <SocialMediaInfo></SocialMediaInfo>
         </div>
     </MuiThemeProvider>
 );
