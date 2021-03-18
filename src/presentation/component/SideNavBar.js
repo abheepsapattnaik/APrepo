@@ -8,12 +8,9 @@ import Divider from '@material-ui/core/Divider';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
-import InboxIcon from '@material-ui/icons/MoveToInbox';
-import AppTopBar from "./AppTopBar";
-import {Link} from "@material-ui/core";
-import InfoIcon from '@material-ui/icons/Info';
-import WorkIcon from '@material-ui/icons/Work';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
+import AppTopBar from './AppTopBar';
+import {Link} from '@material-ui/core';
+import {iconMap, linkMap, navTabs, redirectTabs} from '../../utils/TabTypes';
 
 const drawerWidth = 240;
 
@@ -47,18 +44,6 @@ export default function SideNavBar() {
         const newWindow = window.open(url)
         if (newWindow) newWindow.opener = null
     }
-    const iconMap = {
-        'About': <InfoIcon/>,
-        'Skills': <WorkIcon/>,
-        'Experience': <InboxIcon/>,
-        'Interest': <CheckCircleIcon/>
-    }
-    const linkMap = {
-        'LinkedIn': "https://www.linkedin.com/in/abheepsa-pattnaik-a23706b4",
-        'GitHub': "https://github.com/abheepsapattnaik?tab=repositories",
-        'Instagram': "https://www.instagram.com/abheepsapattnaik/?hl=en"
-    }
-
     return (
         <div className={classes.root}>
             <CssBaseline/>
@@ -74,7 +59,7 @@ export default function SideNavBar() {
                 <div className={classes.toolbar}/>
                 <Divider/>
                 <List>
-                    {['About', 'Skills', 'Experience', 'Interest'].map((text, index) => (
+                    {navTabs.map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{iconMap[text]}</ListItemIcon>
                             <ListItemText primary={text}/>
@@ -84,7 +69,7 @@ export default function SideNavBar() {
                 <Divider/>
 
                 <List>
-                    {['LinkedIn', 'GitHub', 'Instagram'].map((text, index) => (
+                    {redirectTabs.map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{iconMap[text]}</ListItemIcon>
                             <Typography className={classes.root}>
@@ -125,4 +110,5 @@ export default function SideNavBar() {
             </main>
         </div>
     );
+
 }
