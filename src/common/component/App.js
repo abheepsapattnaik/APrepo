@@ -1,6 +1,7 @@
 import './App.css';
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
 import SideNavBar from "../../presentation/component/SideNavBar";
+import {HashRouter, Route, Switch} from 'react-router-dom';
 
 const theme = createMuiTheme({
         palette: {
@@ -13,9 +14,11 @@ const theme = createMuiTheme({
 
 const App = () => (
     <MuiThemeProvider theme={theme}>
-        <div className="App">
-            <SideNavBar></SideNavBar>
-        </div>
+        <HashRouter>
+            <Switch>
+                <Route exact path="/" component={SideNavBar}/>
+            </Switch>
+        </HashRouter>
     </MuiThemeProvider>
 );
 
