@@ -1,7 +1,7 @@
 import './App.css';
 import {createMuiTheme, MuiThemeProvider} from '@material-ui/core';
-import Home from "../../presentation/component/Home";
 import {HashRouter, Route, Switch} from 'react-router-dom';
+import Home from "../../presentation/component";
 
 const theme = createMuiTheme({
         palette: {

@@ -11,59 +11,33 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AppTopBar from './AppTopBar';
 import {Link} from '@material-ui/core';
 import {iconMap, linkMap, navTabs, redirectTabs} from '../../utils/TabTypes';
-import MainContent from "./MainContent";
+import {MainContent} from "./MainContent";
 
-const drawerWidth = 240;
-
-const useStyles = makeStyles((theme) => ({
-    root: {
-        display: 'flex',
-    },
-    appBar: {
-        width: `calc(100% - ${drawerWidth}px)`,
-        marginLeft: drawerWidth,
-    },
-    drawer: {
-        width: drawerWidth,
-        flexShrink: 0,
-    },
-    drawerPaper: {
-        width: drawerWidth,
-    },
-    // necessary for content to be below app bar
-    toolbar: theme.mixins.toolbar,
-    content: {
-        flexGrow: 1,
-        backgroundColor: theme.palette.background.default,
-        padding: theme.spacing(3),
-    },
-}));
-
-export default function Home() {
-    const classes = useStyles();
+export const Home = (prop) => {
     const openInNewTab = (url) => {
         const newWindow = window.open(url)
         if (newWindow) newWindow.opener = null
     }
+
     return (
-        <div className={classes.root}>
+        <div className={prop.classes.root}>
             <CssBaseline/>
             <AppTopBar/>
             <Drawer
-                className={classes.drawer}
+                className={prop.classes.drawer}
                 variant="permanent"
                 classes={{
-                    paper: classes.drawerPaper,
+                    paper: prop.classes.drawerPaper,
                 }}
                 anchor="left"
             >
-                <div className={classes.toolbar}/>
+                <div className={prop.classes.toolbar}/>
                 <Divider/>
                 <List>
-                    {navTabs.map((text, index) => (
-                        <ListItem button key={text}>
-                            <ListItemIcon>{iconMap[text]}</ListItemIcon>
-                            <ListItemText primary={text}/>
+                    {navTabs.map((tab, index) => (
+                        <ListItem button key={tab} onClick={() => prop.tabSelection(tab)}>
+                            <ListItemIcon>{iconMap[tab]}</ListItemIcon>
+                            <ListItemText primary={tab}/>
                         </ListItem>
                     ))}
                 </List>
@@ -73,7 +47,7 @@ export default function Home() {
                     {redirectTabs.map((text, index) => (
                         <ListItem button key={text}>
                             <ListItemIcon>{iconMap[text]}</ListItemIcon>
-                            <Typography className={classes.root}>
+                            <Typography className={prop.classes.root}>
                                 <Link onClick={() => openInNewTab(linkMap[text])}
                                       variant="body2">
                                     <ListItemText secondary={text}/>
@@ -83,9 +57,9 @@ export default function Home() {
                     ))}
                 </List>
             </Drawer>
-            <main className={classes.content}>
-                <div className={classes.toolbar}/>
-                <MainContent/>
+            <main className={prop.classes.content}>
+                <div className={prop.classes.toolbar}/>
+                <MainContent tab={prop.tab.selectedTab}/>
             </main>
         </div>
     );
