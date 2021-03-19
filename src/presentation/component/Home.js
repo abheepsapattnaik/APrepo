@@ -11,7 +11,6 @@ import ListItemText from '@material-ui/core/ListItemText';
 import AppTopBar from './AppTopBar';
 import {Link} from '@material-ui/core';
 import {iconMap, linkMap, navTabs, redirectTabs} from '../../utils/TabTypes';
-import About from "./About";
 import MainContent from "./MainContent";
 
 const drawerWidth = 240;
@@ -40,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-export default function SideNavBar() {
+export default function Home() {
     const classes = useStyles();
     const openInNewTab = (url) => {
         const newWindow = window.open(url)
@@ -49,7 +48,7 @@ export default function SideNavBar() {
     return (
         <div className={classes.root}>
             <CssBaseline/>
-            <AppTopBar></AppTopBar>
+            <AppTopBar/>
             <Drawer
                 className={classes.drawer}
                 variant="permanent"
