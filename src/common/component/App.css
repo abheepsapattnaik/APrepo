@@ -33,3 +33,6 @@ text-align: center;
     transform: rotate(360deg);
   }
 }
+.MuiGridListTile-root{
+width: 25% !important;
+}
