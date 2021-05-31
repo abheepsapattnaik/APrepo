@@ -11,10 +11,6 @@ const About = () => {
                 By profession am a developer.
                 My mantra of life: Get up and dance.
             </Typography>
-            <Typography>
-                My mantra of life: Get up and dance.
-
-            </Typography>
             <Typography variant={'h5'} paragraph={true}
             >
                 Code . Play . Smirk . Slay
